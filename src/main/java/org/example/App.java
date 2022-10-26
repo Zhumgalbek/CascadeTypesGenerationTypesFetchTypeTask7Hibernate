@@ -75,7 +75,7 @@ public class App {
                 case "10" -> System.out.println(service.getInstructorByCourseId(1L));
                 case "11" -> service.deleteInstructorById(1L);
                 case "12" -> service.assignInstructorToCourse(1L, 1L);
-                case "13" -> service.saveLesson(1L, lesson);
+                case "13" -> service.saveLesson(10L, lesson);
                 case "14" -> service.updateLesson(1L, lesson1);
                 case "15" -> System.out.println(service.getLessonById(1L));
                 case "16" -> service.getLessonsByCourseId(1L);

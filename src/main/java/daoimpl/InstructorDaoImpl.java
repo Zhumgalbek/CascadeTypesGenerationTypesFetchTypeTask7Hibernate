@@ -132,8 +132,6 @@ public class InstructorDaoImpl implements InstructorDao {
                     session.merge(instructor);
                 }
             }
-
-
             session.getTransaction().commit();
             session.close();
 

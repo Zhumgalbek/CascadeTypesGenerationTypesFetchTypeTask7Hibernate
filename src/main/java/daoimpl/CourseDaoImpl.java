@@ -20,7 +20,8 @@ public class CourseDaoImpl implements CourseDao {
     public void saveCourse(Course course) {
        try(Session session = sessionFactory.openSession()) {
            session.beginTransaction();
-           session.persist(course);
+           session.persist(new Course(course.getName(), course.getDuration(),
+                   course.getCreateAt(), course.getImagineLink(), course.getDescription()));
            session.getTransaction().commit();
        }
     }
