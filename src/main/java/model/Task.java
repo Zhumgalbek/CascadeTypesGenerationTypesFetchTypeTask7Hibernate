@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDate;
 
@@ -13,7 +12,6 @@ import java.time.LocalDate;
 @Table(name = "tasks")
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 public class Task {
     @Id
@@ -29,7 +27,11 @@ public class Task {
     @Column(name = "task")
     private String task;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,
+                    CascadeType.MERGE,
+                    CascadeType.PERSIST,
+                    CascadeType.REFRESH},
+            fetch = FetchType.LAZY)
     @JoinColumn(name = "lesson_id",referencedColumnName = "id")
     private Lesson lesson;
 
@@ -39,5 +41,14 @@ public class Task {
         this.task = task;
     }
 
-
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", deadline=" + deadline +
+                ", task='" + task + '\'' +
+                ", lesson=" + lesson +
+                '}';
+    }
 }

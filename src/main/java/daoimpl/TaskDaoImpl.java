@@ -23,6 +23,7 @@ public class TaskDaoImpl implements TaskDao {
             session.getTransaction().begin();
 
             Lesson lesson = session.find(Lesson.class,id);
+            task.setLesson(lesson);
             lesson.addTask(task);
             session.merge(lesson);
 
@@ -81,10 +82,9 @@ public class TaskDaoImpl implements TaskDao {
             Session session = sessionFactory.openSession();
             session.beginTransaction();
 
-            Task task = session.find(Task.class,id);
+            Task task = session.get(Task.class,id);
             task.setLesson(null);
             session.remove(task);
-
 
             session.getTransaction().commit();
             session.close();

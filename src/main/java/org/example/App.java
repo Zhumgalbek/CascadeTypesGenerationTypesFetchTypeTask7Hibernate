@@ -1,54 +1,91 @@
 package org.example;
 
-import daoimpl.CourseDaoImpl;
-import daoimpl.InstructorDaoImpl;
-import daoimpl.LessonDaoImpl;
-import daoimpl.TaskDaoImpl;
 import model.Course;
 import model.Instructor;
 import model.Lesson;
 import model.Task;
+import service.Service;
+import service.ServiceImpl;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class App {
+
+    public static Scanner scanner = new Scanner(System.in);
+
+    private static final Service service = new ServiceImpl();
     public static void main(String[] args) {
-        CourseDaoImpl courseDao = new CourseDaoImpl();
-        ArrayList<Instructor> instructors = new ArrayList<>();
-        ArrayList<Lesson> lessons = new ArrayList<>();
-        instructors.add(new Instructor());
-        lessons.add(new Lesson());
-//        courseDao.saveCourse(new Course("Peaksoft","9 - aй", LocalDate.now(),
-//                "hkjkdf",
-//                "very good course",instructors,lessons));
-//        System.out.println("sdaffffffffffffffffffffffffffffffffffffffffffffffffff");
 
-        InstructorDaoImpl instructorDao = new InstructorDaoImpl();
+        Instructor instructor = new Instructor("Zhanarbek","Abdurasulov","zhanarbek@gmail.com","+996999011699");
 
-//        instructorDao.updateInstructor(1L,new Instructor("por","asfd","sdafas","asdfa"));
+        Instructor instructor1 = new Instructor("Muhammed","Allanov","allanov@gmail.com","+996999011699");
 
-//        System.out.println(instructorDao.getInstructorById(1L));
-//        instructorDao.deleteInstructorById(1L);
-//        instructorDao.assignInstructorToCourse(3L,2L)
-//        System.out.println(instructorDao.getInstructorById(3L));
-        LessonDaoImpl lessonDao = new LessonDaoImpl();
-//        lessonDao.saveLesson(3L,new Lesson("privet","lka;sjdfl;kakjsdl"));
-//        lessonDao.updateLesson(2L,new Lesson("askjdfld","asdkhfa"));
-//        System.out.println(lessonDao.getLessonById(6L));
-//        courseDao.deleteCourseById(3l);
-//        System.out.println(lessonDao.getAllCogetLessonsByCoursedurse(1L));
+        Lesson lesson = new Lesson("Hibernate","yhttps://www.youtube.com/");
 
-        TaskDaoImpl taskDao = new TaskDaoImpl();
-//        taskDao.saveTask(1L,new Task("akjdsfhkj",LocalDate.now(),"aslkdjf"));
-//        taskDao.updateTask(1L,new Task("pricet",LocalDate.now(),"doctor"));
+        Lesson lesson1 = new Lesson("SQL","video");
 
-//        System.out.println(courseDao.getCourseByName("dgh"));
-//        instructorDao.assignInstructorToCourse(3L,3L);
-//        System.out.println(taskDao.getAllTaskByLessonId(1L));
+        Course course = new Course("Peaksoft","Kygyzstan", LocalDate.now(),
+                "peaksoft.talentlms.com","good course!)");
 
-//        taskDao.deleteTaskById(3L);
-//        System.out.println(instructorDao.getInstructorByCourseId(1L));
-        instructorDao.deleteInstructorById(3L);
+        Course course1 = new Course("JAVA7RULIT","Kygyzstan", LocalDate.now(),
+                "peaksoft.talentlms.com","good course!)");
+
+        Task task = new Task("JAVA7",LocalDate.now(),"HIBERNATE");
+
+        Task task1 = new Task("JAVA7",LocalDate.now(),"HIBERNATE");
+
+        Instructor instructor2 = new Instructor("RASUL","Abdurasulov","zhanarbek@gmail.com","+996999011699");
+
+        Instructor instructor3 = new Instructor("AIASABEK","Allanov","allanov@gmail.com","+996999011699");
+
+        Lesson lesson3 = new Lesson("OOP","yhttps://www.youtube.com/");
+
+        Lesson lesson4 = new Lesson("MASSIV","video");
+
+        Course cours3 = new Course("ITRUN","Kygyzstan", LocalDate.now(),
+                "peaksoft.talentlms.com","good course!)");
+
+        Course course4 = new Course("JS","Kygyzstan", LocalDate.now(),
+                "peaksoft.talentlms.com","good course!)");
+
+        Task task3 = new Task("JAVA_SCRIPT7",LocalDate.now(),"HIBERNATE");
+
+        Task task4 = new Task("JAVA-8",LocalDate.now(),"HIBERNATE");
+
+        while (true) {
+            System.out.print("ВВЫБЕРИТЕ ЦИФРУ : ");
+            String SelectNumber = scanner.nextLine();
+
+            System.out.println();
+
+            switch (SelectNumber) {
+                case "1" -> service.saveCourse(course1);
+                case "2" -> service.updateCourse(1L, course1);
+                case "3" -> System.out.println(service.getCourseById(1L));
+                case "4" -> System.out.println(service.getAllCourse());
+                case "5" -> service.deleteCourseById(1L);
+                case "6"-> System.out.println(service.getCourseByName("Peaksoft"));
+                case "7" -> service.saveInstructor(instructor);
+                case "8" -> service.updateInstructor(1L, instructor1);
+                case "9" -> System.out.println(service.getInstructorById(1L));
+                case "10" -> System.out.println(service.getInstructorByCourseId(1L));
+                case "11" -> service.deleteInstructorById(1L);
+                case "12" -> service.assignInstructorToCourse(1L, 1L);
+                case "13" -> service.saveLesson(1L, lesson);
+                case "14" -> service.updateLesson(1L, lesson1);
+                case "15" -> System.out.println(service.getLessonById(1L));
+                case "16" -> service.getLessonsByCourseId(1L);
+                case "17" -> service.saveTask(1L, task);
+                case "18" -> service.updateTask(1L, task1);
+                case "19" -> System.out.println(service.getAllTaskByLessonId(1L));
+                case "20" -> service.deleteTaskById(1L);
+                default -> System.out.println("no such number!!!!");
+
+            }
+        }
     }
 }

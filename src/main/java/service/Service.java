@@ -9,44 +9,44 @@ import java.util.List;
 
 public interface Service {
 
-    void saveCourse(Course course);
+    void saveCourse(Course course);//-1
 
-    void updateCourse(Long id, Course course);
+    void updateCourse(Long id, Course course);//0
 
 
-    Course getCourseById(Long id);
+    Course getCourseById(Long id); //1
 
-    List<Course> getAllCourse();
+    List<Course> getAllCourse(); //2
 
-    void deleteCourseById(Long id);
+    void deleteCourseById(Long id);//3
 
-    Course getCourseByName(String name);
+    Course getCourseByName(String name);//4
 
-    void saveInstructor(Instructor instructor);
+    void saveInstructor(Instructor instructor);//5
 
-    void updateInstructor(Long id, Instructor instructor);
+    void updateInstructor(Long id, Instructor instructor);//6
 
-    Instructor getInstructorById(Long id);
+    Instructor getInstructorById(Long id);//7
 
-    List<Instructor> getInstructorByCourseId(Long id);
+    List<Instructor> getInstructorByCourseId(Long id);//8
 
-    void deleteInstructorById(Long id);
+    void deleteInstructorById(Long id);//9
 
-    void assignInstructorToCourse(Long course_id, Long instructor_id);
+    void assignInstructorToCourse(Long course_id, Long instructor_id);//10
 
-    void saveLesson(Long id, Lesson lesson);
+    void saveLesson(Long id, Lesson lesson);//11
 
-    void updateLesson(Long id, Lesson lesson);
+    void updateLesson(Long id, Lesson lesson);//12
 
-    Lesson getLessonById(Long id);
+    Lesson getLessonById(Long id);//13
 
-    List<Lesson> getLessonsByCourseId(Long id);
+    List<Lesson> getLessonsByCourseId(Long id);//14
 
-    void saveTask(Long id, Task task);
+    void saveTask(Long id, Task task);//15
 
-    void updateTask(Long id, Task task);
+    void updateTask(Long id, Task task);//16
 
-    List<Task> getAllTaskByLessonId(Long id);
+    List<Task> getAllTaskByLessonId(Long id);//17
 
-    void deleteTaskById(Long id);
+    void deleteTaskById(Long id);//18
 }

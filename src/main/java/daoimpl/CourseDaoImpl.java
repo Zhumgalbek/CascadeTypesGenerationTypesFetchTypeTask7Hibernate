@@ -18,16 +18,11 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public void saveCourse(Course course) {
-        try {
-           EntityManager entityManager1 = entityManagerFactory.createEntityManager();
-          entityManager1.getTransaction().begin();
-          entityManager1.persist(course);
-          entityManager1.getTransaction().commit();
-          entityManager1.close();
-            System.out.println("this course has been successfully added)"+course);
-        }catch (Exception e){
-            System.out.println("saveCousrse Exception!");
-        }
+       try(Session session = sessionFactory.openSession()) {
+           session.beginTransaction();
+           session.persist(course);
+           session.getTransaction().commit();
+       }
     }
 
     @Override

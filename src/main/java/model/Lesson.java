@@ -8,6 +8,8 @@ import lombok.ToString;
 
 import java.util.List;
 
+import static jakarta.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "lessons")
 @Getter
@@ -24,15 +26,11 @@ public class Lesson {
     @Column(name = "video_link", length = 35)
     private String videoLink;
 
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH},fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {DETACH, MERGE, PERSIST, REFRESH},fetch = FetchType.EAGER)
     private Course course;
 
     @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
+            fetch = FetchType.EAGER,mappedBy = "lesson")
     private List<Task> task;
 
 
@@ -40,6 +38,7 @@ public class Lesson {
     public Lesson(String name, String videoLink) {
         this.name = name;
         this.videoLink = videoLink;
+
     }
     public void addTask(Task newTask) {
         this.task.add(newTask);

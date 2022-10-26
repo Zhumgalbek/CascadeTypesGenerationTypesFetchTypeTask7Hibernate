@@ -9,6 +9,8 @@ import lombok.ToString;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jakarta.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "instructors")
 @Getter
@@ -32,14 +34,10 @@ public class Instructor {
     @Column(name = "phone_number",length = 55)
     private String phoneNumber;
 
-    @ManyToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH},
-            fetch = FetchType.EAGER)
-    @JoinTable(name = "instructor_course",joinColumns = @JoinColumn(name = "instructor_id",referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "course_id",referencedColumnName = "id"))
+    @ManyToMany(cascade = {DETACH, MERGE, PERSIST, REFRESH},fetch = FetchType.EAGER)
+    @JoinTable(name = "instructor_course",
+            joinColumns = @JoinColumn(name = "course_id",referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "instructor_id",referencedColumnName = "id"))
     private List<Course> course = new ArrayList<>();
 
 

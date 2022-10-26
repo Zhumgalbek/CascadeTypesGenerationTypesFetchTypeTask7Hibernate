@@ -1,6 +1,5 @@
 package cofig;
 
-
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import model.Course;

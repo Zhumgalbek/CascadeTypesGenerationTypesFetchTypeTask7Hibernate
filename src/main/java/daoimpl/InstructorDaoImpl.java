@@ -22,12 +22,13 @@ public class InstructorDaoImpl implements InstructorDao {
         try {
             EntityManager entityManager1 = entityManagerFactory.createEntityManager();
             entityManager1.getTransaction().begin();
-            entityManager1.persist(instructor);
+            entityManager1.persist(new Instructor(instructor.getFirstName(), instructor.getLastName(),
+                    instructor.getEmail(), instructor.getPhoneNumber()));
             entityManager1.getTransaction().commit();
             entityManager1.close();
             System.out.println("this course has been successfully added)" + instructor);
         } catch (Exception e) {
-            System.out.println("sava Exception!");
+            System.out.println("sava Exception!"+" "+e.getMessage());
         }
     }
 
