@@ -28,7 +28,7 @@ public class App {
 
         Lesson lesson1 = new Lesson("SQL","video");
 
-        Course course = new Course("Peaksoft","Kygyzstan", LocalDate.now(),
+        Course course = new Course("Peaksoft","Kygyzstan",LocalDate.of(2000,12,12),
                 "peaksoft.talentlms.com","good course!)");
 
         Course course1 = new Course("JAVA7RULIT","Kygyzstan", LocalDate.now(),
@@ -63,7 +63,7 @@ public class App {
             System.out.println();
 
             switch (SelectNumber) {
-                case "1" -> service.saveCourse(course1);
+                case "1" -> service.saveCourse(course);
                 case "2" -> service.updateCourse(1L, course1);
                 case "3" -> System.out.println(service.getCourseById(1L));
                 case "4" -> System.out.println(service.getAllCourse());

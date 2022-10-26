@@ -75,7 +75,9 @@ public class CourseDaoImpl implements CourseDao {
             Session session = sessionFactory.openSession();
             session.beginTransaction();
 
-            List<Course> courses = session.createQuery("select c from Course c", Course.class).list();
+//            List<Course> courses = session.createQuery("select c from Course c", Course.class).list();
+            List<Course> courses = session.createQuery("select u from Course u order by u.createAt").list();
+
 
             session.getTransaction().commit();
             session.close();

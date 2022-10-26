@@ -34,11 +34,9 @@ public class Lesson {
     private List<Task> task;
 
 
-
     public Lesson(String name, String videoLink) {
         this.name = name;
         this.videoLink = videoLink;
-
     }
     public void addTask(Task newTask) {
         this.task.add(newTask);
